@@ -1,0 +1,98 @@
+
+import { Smartphone, Gamepad2, Globe, Layout, MessageSquare, Monitor } from "lucide-react"
+
+export const services = [
+    {
+        id: "android",
+        title: "Android Application Development",
+        description: "High-quality Android applications built with modern technologies and best practices for optimal performance.",
+        fullDescription: "We specialize in creating robust, scalable, and user-friendly Android applications. Using Kotlin and Jetpack Compose, we deliver native experiences that leverage the full power of the Android ecosystem. From concept to deployment, we ensure your app is secure, performant, and ready for millions of users.",
+        features: ["Native Android Development (Kotlin)", "Jetpack Compose UI", "Offline-first Architecture", "Google Play Store Optimization"],
+        icon: Smartphone,
+        color: "from-[#3b82f6] to-[#06b6d4]",
+    },
+    {
+        id: "ios",
+        title: "iOS Application Development",
+        description: "Professional iOS applications designed with intuitive interfaces and seamless user experiences.",
+        fullDescription: "Our iOS development team crafts elegant and powerful apps for iPhone and iPad. utilizing Swift and SwiftUI. We adhere strictly to Apple's Human Interface Guidelines to provide users with the polished experience they expect. Whether it's a consumer app or an enterprise solution, we deliver excellence.",
+        features: ["Native iOS Development (Swift)", "SwiftUI & UIKit", "Core Data & CloudKit", "App Store Compliance"],
+        icon: Smartphone,
+        color: "from-[#c084fc] to-[#7c3aed]",
+    },
+    {
+        id: "game",
+        title: "Android Game Development",
+        description: "Engaging mobile games with stunning graphics and immersive gameplay for Android platform.",
+        fullDescription: "We bring game ideas to life with Unity and modern Android game engines. Our expertise covers 2D and 3D games, optimizing graphics and performance for a wide range of devices. We focus on player retention, smooth mechanics, and monetization strategies.",
+        features: ["Unity & Unreal Engine", "2D & 3D Game Design", "Performance Optimization", "In-App Purchases & Ads"],
+        icon: Gamepad2,
+        color: "from-[#ec4899] to-[#f43f5e]",
+    },
+    {
+        id: "ui-ux",
+        title: "UI/UX Design",
+        description: "Creative and intuitive user interface designs that enhance user engagement and satisfaction.",
+        fullDescription: "We design user interfaces that are not only visually appealing but also easy to use. Our process starts with wireframing and prototyping to ensure the user flow is logical and efficient. We use modern design tools like Figma to create high-fidelity mockups that align with your brand identity.",
+        features: ["User Research & Personas", "Wireframing & Prototyping", "Design Systems (Figma)", "Usability Testing"],
+        icon: Layout,
+        color: "from-[#f97316] to-[#ea580c]",
+    },
+]
+
+export const projects = [
+    {
+        id: 1,
+        title: "E-Commerce Platform",
+        description: "Full-stack e-commerce solution with React, Node.js, and MongoDB",
+        fullDescription: "A comprehensive e-commerce platform built to handle high traffic and complex product data. Features include real-time inventory management, secure payment gateway integration, and a responsive customer dashboard. The architecture ensures fast load times and SEO optimization.",
+        image: "/ecommerce-platform-ui-design.jpg",
+        tags: ["React", "Node.js", "MongoDB"],
+        features: ["User Authentication", "Payment Processing (Stripe)", "Admin Dashboard", "Order Tracking"],
+    },
+    {
+        id: 2,
+        title: "Task Management App",
+        description: "Collaborative task management tool with real-time updates",
+        fullDescription: "A productivity tool designed for remote teams to collaborate effectively. It offers Kanban boards, real-time chat, and file sharing. Built with Next.js and Firebase to provide instant updates across all connected clients without page refreshes.",
+        image: "/task-management-dashboard.png",
+        tags: ["Next.js", "Firebase", "Tailwind"],
+        features: ["Real-time Sync", "Drag & Drop Interface", "Team Collaboration", "Dark Mode"],
+    },
+    {
+        id: 3,
+        title: "Portfolio Website",
+        description: "Modern portfolio showcasing design and development skills",
+        fullDescription: "A visually striking portfolio template designed for creative professionals. It features smooth page transitions, interactive 3D elements, and a fully accumulated CMS for easy content updates. Built with performance and accessibility in mind.",
+        image: "/portfolio-website-design.png",
+        tags: ["Next.js", "Framer Motion", "Tailwind"],
+        features: ["Interactive Animations", "SEO Optimized", "Responsive Design", "CMS Integration"],
+    },
+    {
+        id: 4,
+        title: "Social Media Dashboard",
+        description: "Analytics dashboard for managing multiple social platforms",
+        fullDescription: "A centralized dashboard that aggregates data from Twitter, Facebook, and Instagram APIs. It provides visualized insights into audience engagement, growth trends, and content performance, helping marketers make data-driven decisions.",
+        image: "/social-media-dashboard-analytics.jpg",
+        tags: ["React", "D3.js", "API Integration"],
+        features: ["Data Visualization", "Report Export", "Multi-account Management", "Trend Analysis"],
+    },
+    {
+        id: 5,
+        title: "AI Chat Application",
+        description: "Real-time chat application powered by AI assistance",
+        fullDescription: "An intelligent chat interface that integrates with OpenAI's GPT models to assist users in real-time. It supports context-aware conversations, code syntax highlighting, and voice input, making it a versatile assistant for developers and writers.",
+        image: "/ai-chat-application-interface.jpg",
+        tags: ["React", "OpenAI", "WebSocket"],
+        features: ["AI Integration", "Voice Recognition", "Code Highlighting", "Chat History"],
+    },
+    {
+        id: 6,
+        title: "Mobile App Design",
+        description: "UI/UX design for fitness tracking mobile application",
+        fullDescription: "A complete design system and prototype for a health and fitness tracking app. The design focuses on motivation and clarity, using vibrant colors and intuitive navigation patterns to encourage daily usage and goal tracking.",
+        image: "/fitness-mobile-app.png",
+        tags: ["Figma", "UI/UX", "Prototyping"],
+        features: ["User Flow Maps", "High-fidelity Mockups", "Interactive Prototype", "Design System"],
+    },
+]

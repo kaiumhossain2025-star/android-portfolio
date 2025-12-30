@@ -1,0 +1,116 @@
+
+> my-v0-project@0.1.0 build L:\projects\android-showcase-portfolio\android-showcase-portfolio
+> next build
+
+   Γû▓ Next.js 16.0.7 (Turbopack)
+   - Environments: .env
+
+   Creating an optimized production build ...
+
+> Build error occurred
+Error: Turbopack build failed with 6 errors:
+./app/(public)/terms/page.tsx:1:1
+Export createServerSideClient doesn't exist in target module
+> 1 | import { createServerSideClient } from "@/lib/supabase-server"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { Metadata } from "next"
+  3 |
+  4 | export const metadata: Metadata = {
+
+The export createServerSideClient was not found in module [project]/lib/supabase-server.ts [app-rsc] (ecmascript).
+Did you mean to import createClient?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+
+./app/actions/about.ts:4:1
+Export createServerSideClient doesn't exist in target module
+  2 |
+  3 | import { createAdminClient } from "@/lib/supabase-admin"
+> 4 | import { createServerSideClient } from "@/lib/supabase-server"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { cookies } from "next/headers"
+  6 | import { revalidatePath } from "next/cache"
+  7 |
+
+The export createServerSideClient was not found in module [project]/lib/supabase-server.ts [app-rsc] (ecmascript).
+Did you mean to import createClient?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+
+./app/actions/privacy.ts:4:1
+Export createServerSideClient doesn't exist in target module
+  2 |
+  3 | import { createAdminClient } from "@/lib/supabase-admin"
+> 4 | import { createServerSideClient } from "@/lib/supabase-server"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { cookies } from "next/headers"
+  6 | import { revalidatePath } from "next/cache"
+  7 |
+
+The export createServerSideClient was not found in module [project]/lib/supabase-server.ts [app-rsc] (ecmascript).
+Did you mean to import createClient?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./app/actions/privacy.ts
+    ./app/(public)/privacy/page.tsx
+
+
+./app/actions/team.ts:5:1
+Export createServerSideClient doesn't exist in target module
+  3 | import { cookies } from "next/headers"
+  4 | import { createAdminClient } from "@/lib/supabase-admin"
+> 5 | import { createServerSideClient } from "@/lib/supabase-server"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { revalidatePath } from "next/cache"
+  7 |
+  8 | export type SocialLink = {
+
+The export createServerSideClient was not found in module [project]/lib/supabase-server.ts [app-rsc] (ecmascript).
+Did you mean to import createClient?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+Import trace:
+  Server Component:
+    ./app/actions/team.ts
+    ./app/(public)/team/page.tsx
+
+
+./app/actions/terms.ts:4:1
+Export createServerSideClient doesn't exist in target module
+  2 |
+  3 | import { createAdminClient } from "@/lib/supabase-admin"
+> 4 | import { createServerSideClient } from "@/lib/supabase-server"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  5 | import { cookies } from "next/headers"
+  6 | import { revalidatePath } from "next/cache"
+  7 |
+
+The export createServerSideClient was not found in module [project]/lib/supabase-server.ts [app-rsc] (ecmascript).
+Did you mean to import createClient?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+
+./app/actions/users.ts:5:1
+Export createServerSideClient doesn't exist in target module
+  3 | import { cookies } from "next/headers"
+  4 | import { createAdminClient } from "@/lib/supabase-admin"
+> 5 | import { createServerSideClient } from "@/lib/supabase-server"
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  6 | import { revalidatePath } from "next/cache"
+  7 |
+  8 | export type UserProfile = {
+
+The export createServerSideClient was not found in module [project]/lib/supabase-server.ts [app-rsc] (ecmascript).
+Did you mean to import createClient?
+All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
+
+
+    at <unknown> (./app/(public)/terms/page.tsx:1:1)
+    at <unknown> (./app/actions/about.ts:4:1)
+    at <unknown> (./app/actions/privacy.ts:4:1)
+    at <unknown> (./app/actions/team.ts:5:1)
+    at <unknown> (./app/actions/terms.ts:4:1)
+    at <unknown> (./app/actions/users.ts:5:1)
+ΓÇëELIFECYCLEΓÇë Command failed with exit code 1.

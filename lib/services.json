@@ -1,0 +1,67 @@
+[
+    {
+        "id": "android-app-development",
+        "title": "Android App Development",
+        "description": "Native Android applications developed with modern frameworks, ensuring performance, scalability, and long-term maintainability.",
+        "fullDescription": "We build high-performance Android applications tailored for scalability, security, and real-world usability. Our development process focuses on clean architecture, smooth performance, and seamless user experience across a wide range of Android devices. From idea validation to Play Store–ready apps, we deliver solutions that are reliable, maintainable, and optimized for long-term growth. Every app is engineered to meet both user expectations and business objectives.",
+        "icon_name": "IoLogoAndroid",
+        "color_theme": "from-[#8b5cf6] to-[#a78bfa]",
+        "features": [
+            "Native Android Development",
+            "Scalable App Architecture",
+            "Performance Optimization",
+            "Secure Data Handling",
+            "Custom UI Integration",
+            "Play Store Ready Deployment"
+        ]
+    },
+    {
+        "id": "ios-app-development",
+        "title": "iOS App Development",
+        "description": "We design and develop refined iOS applications that deliver performance, stability, and premium user experience.",
+        "fullDescription": "We design and develop refined iOS applications that deliver performance, stability, and premium user experience. Our focus is on creating apps that feel native, intuitive, and aligned with Apple’s design and performance standards. Whether it’s a startup MVP or a full-scale product, we ensure every iOS app is built with precision, consistency, and long-term maintainability.",
+        "icon_name": "FaAppStoreIos",
+        "color_theme": "from-[#8b5cf6] to-[#a78bfa]",
+        "features": [
+            "Native iOS Experience",
+            "High-Performance Codebase",
+            "Elegant Interface Design",
+            "Secure App Architecture",
+            "App Store Compliance",
+            "End-to-End Development"
+        ]
+    },
+    {
+        "id": "mobile-game-development",
+        "title": "Mobile Game Development",
+        "description": "We create engaging mobile games that combine compelling visuals, smooth gameplay, and optimized performance.",
+        "fullDescription": "We create engaging mobile games that combine compelling visuals, smooth gameplay, and optimized performance. Our game development process balances creativity with technical excellence to deliver immersive gaming experiences. From casual games to feature-rich mobile titles, we focus on performance, user retention, and scalable game mechanics.",
+        "icon_name": "Gamepad2",
+        "color_theme": "from-[#8b5cf6] to-[#a78bfa]",
+        "features": [
+            "Engaging Gameplay Design",
+            "Optimized Performance",
+            "Custom Game UI & Assets",
+            "Cross-Device Compatibility",
+            "Monetization Ready",
+            "Scalable Game Architecture"
+        ]
+    },
+    {
+        "id": "ui-ux-design",
+        "title": "UI / UX Design",
+        "description": "We craft intuitive and visually refined interfaces that enhance usability and deliver seamless user experiences.",
+        "fullDescription": "We design intuitive, user-centric digital experiences that balance aesthetics with functionality. Our UI/UX process focuses on understanding user behavior, defining clear flows, and creating visually refined interfaces that feel effortless to use. From concept to final interface, we ensure every screen is purposeful, consistent, and aligned with your business goals. The result is a product that not only looks premium but also performs efficiently across platforms. We design with scalability, usability, and long-term growth in mind—so your product remains relevant as your users and features evolve.",
+        "icon_name": "Palette",
+        "color_theme": "from-[#8b5cf6] to-[#a78bfa]",
+        "features": [
+            "User-Centered Design Approach",
+            "Clean & Modern Visual Design",
+            "Intuitive User Flows",
+            "Wireframing & Prototyping",
+            "Design System & Consistency",
+            "Cross-Platform Compatibility",
+            "Developer-Friendly Handoff"
+        ]
+    }
+]
