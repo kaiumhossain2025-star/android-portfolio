@@ -7,7 +7,7 @@ const nextConfig = {
     unoptimized: true,
   },
   async headers() {
-    const supabaseUrl = 'https://kdxckihjekccmaxywpsn.supabase.co';
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
     // Extract hostname for CSP (e.g., https://xyz.supabase.co)
     const supabaseDomain = supabaseUrl ? new URL(supabaseUrl).origin : '';
     const supabaseWss = supabaseDomain ? supabaseDomain.replace('https://', 'wss://') : '';
