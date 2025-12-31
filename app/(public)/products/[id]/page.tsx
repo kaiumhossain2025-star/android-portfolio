@@ -3,7 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, CheckCircle2, Share2, ShoppingCart, Star, Tag } from "lucide-react"
 import Header from "@/components/header"
-import Footer from "@/components/footer"
+
 import { Button } from "@/components/ui/button"
 import { createServerSideClient } from "@/lib/supabase-server"
 import ProductDetailAnimations from "@/components/product-detail-animations"
@@ -45,7 +45,7 @@ export default async function ProductDetailPage(props: Props) {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
                         {/* Left Column - Image */}
                         <ProductDetailAnimations type="image">
-                            <div className="relative aspect-video lg:aspect-square w-full rounded-3xl overflow-hidden border border-border bg-muted shadow-2xl">
+                            <div className="relative aspect-video lg:aspect-square w-full rounded-3xl overflow-hidden border border-border bg-muted shadow-2xl h-[70%]">
                                 {product.image_url ? (
                                     <Image
                                         src={product.image_url}
@@ -146,7 +146,7 @@ export default async function ProductDetailPage(props: Props) {
                 </div>
             </main>
 
-            <Footer />
+           
         </div>
     )
 }

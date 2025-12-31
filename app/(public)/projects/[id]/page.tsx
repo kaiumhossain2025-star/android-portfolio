@@ -2,7 +2,6 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ChevronLeft, Check, ExternalLink } from "lucide-react"
 import { createClient } from "@/lib/supabase"
-import ProjectsGrid from "@/components/projects-grid"
 
 export default async function ProjectPage({
   params,
@@ -28,7 +27,7 @@ export default async function ProjectPage({
     <div className="min-h-screen bg-background pt-12 pb-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
-          href="/#projects"
+          href="/projects"
           className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-8 group"
         >
           <ChevronLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
@@ -39,9 +38,9 @@ export default async function ProjectPage({
         <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
           <div className="space-y-6">
             <div className="flex flex-wrap gap-2">
-              {project.tags?.map((tag: string) => (
+              {project.tags?.map((tag: string, index: number) => (
                 <span
-                  key={tag}
+                  key={`${tag}-${index}`}
                   className="px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary border border-primary/20"
                 >
                   {tag}
@@ -103,15 +102,7 @@ export default async function ProjectPage({
           </div>
         </div>
 
-        {/* More Projects Section */}
-        <div className="border-t border-border pt-16">
-          <ProjectsGrid 
-            limit={3} 
-            gridClassName="grid-cols-1 md:grid-cols-3" 
-            showTitle={true} 
-            className="py-0"
-          />
-        </div>
+
       </div>
     </div>
   )

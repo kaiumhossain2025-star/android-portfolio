@@ -57,13 +57,11 @@ export default function HeroSection() {
               variants={itemVariants}
               className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground text-pretty"
             >
-              We Build Powerful{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#3b82f6] to-[#60a5fa]">
-                Android
-              </span>
-              , <span className="text-transparent bg-clip-text bg-linear-to-r from-[#ec4899] to-[#f472b6]">iOS</span>{" "}
-              & <span className="text-transparent bg-clip-text bg-linear-to-r from-[#8b5cf6] to-[#a78bfa]">Game</span>{" "}
-              Applications For Your Business.
+              Building powerful{" "}
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#8b5cf6] to-[#a78bfa]">
+                mobile
+              </span>{" "}
+              experiences
             </motion.h1>
 
             <motion.p variants={itemVariants} className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-lg">

@@ -41,6 +41,7 @@ import { services as localServices } from "@/lib/services"
 export default function Footer() {
   const currentYear = new Date().getFullYear()
   const [socials, setSocials] = useState<any[]>([])
+  const [servicesList, setServicesList] = useState<any[]>([])
   const [siteName, setSiteName] = useState("Aptic Studio")
   const [logoUrl, setLogoUrl] = useState("")
   const [services, setServices] = useState<any[]>(localServices)
@@ -56,12 +57,22 @@ export default function Footer() {
         if (settings.site_name) setSiteName(settings.site_name)
         setLogoUrl(settings.logo_url || "")
       }
+
+      const { data: services } = await supabase
+        .from("services")
+        .select("id, title")
+        .order("order_index")
+        .limit(5)
+
+      if (services) {
+        setServicesList(services)
+      }
     }
     fetchData()
   }, [])
 
   return (
-    <footer className="bg-[var(--footer-bg)] text-[var(--footer-text)] border-t border-border py-12 mt-20 transition-colors duration-300">
+    <footer className="bg-gray-100 dark:bg-black text-gray-900 dark:text-gray-300 border-t border-border pt-16 pb-8 mt-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -129,32 +140,59 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Social */}
+          {/* Social Links */}
           <div>
-            <h3 className="font-semibold text-inherit mb-4">Connect</h3>
-            <div className="flex gap-4">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-background/10 hover:bg-primary text-inherit hover:text-white flex items-center justify-center transition-all">
-                <Linkedin size={20} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-background/10 hover:bg-primary text-inherit hover:text-white flex items-center justify-center transition-all">
-                <Instagram size={20} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-background/10 hover:bg-primary text-inherit hover:text-white flex items-center justify-center transition-all">
-                <Twitter size={20} />
-              </a>
+            <h3 className="font-semibold text-inherit mb-4">Follow Us</h3>
+            <div className="flex gap-3">
+              {socials.length > 0 ? (
+                socials.map((social, i) => {
+                  const Icon = getIcon(social.platform)
+                  return (
+                    <a
+                      key={i}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 rounded-lg bg-white text-black flex items-center justify-center hover:bg-gray-200 transition-colors"
+                    >
+                      <Icon size={20} />
+                    </a>
+                  )
+                })
+              ) : (
+                [
+                  { icon: Twitter, href: "https://twitter.com" },
+                  { icon: Linkedin, href: "https://linkedin.com" },
+                  { icon: Github, href: "https://github.com" },
+                  { icon: Instagram, href: "https://instagram.com" }
+                ].map((item, i) => (
+                  <a
+                    key={i}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-lg bg-white text-black flex items-center justify-center hover:bg-gray-200 transition-colors"
+                  >
+                    <item.icon size={20} />
+                  </a>
+                ))
+              )}
             </div>
           </div>
+
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-border/20 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-inherit/70 text-sm">&copy; {currentYear} {siteName}. All rights reserved.</p>
-          <div className="flex gap-6 text-sm text-inherit/70">
+        {/* Bottom Bar */}
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 border-t border-border/20">
+          <p className="text-muted-foreground text-sm">
+            &copy; {currentYear} {siteName}. All rights reserved.
+          </p>
+          <div className="flex gap-6 text-sm text-muted-foreground">
             <Link href="/privacy" className="hover:text-primary transition-colors">
               Privacy Policy
             </Link>
             <Link href="/terms" className="hover:text-primary transition-colors">
-              Terms and Conditions
+              Terms
             </Link>
           </div>
         </div>

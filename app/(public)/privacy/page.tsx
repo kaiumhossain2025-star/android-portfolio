@@ -43,10 +43,7 @@ export default async function PrivacyPage() {
             <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">
                 {pageTitle}
             </h1>
-            <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                <span className="w-2 h-2 rounded-full bg-pink-500"></span>
-                <span className="text-sm font-medium">Last updated: {updatedDate}</span>
-            </div>
+
         </div>
 
         {/* Intro / Description if exists */}

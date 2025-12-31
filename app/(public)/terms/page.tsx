@@ -32,10 +32,7 @@ export default async function TermsPage() {
               <p className="text-base text-gray-400 mb-6">
                 {description}
               </p>
-              <div className="text-xs text-gray-500 flex items-center gap-2">
-                <span className="w-1 h-1 rounded-full bg-purple-500" />
-                Last Updated: {lastUpdated}
-              </div>
+
            </div>
            
            {/* Content */}

@@ -34,7 +34,7 @@ export default async function TeamPage() {
         {members.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {members.map((member) => (
-              <div key={member.id} className="group flex items-center gap-6 p-6 rounded-2xl transition-all duration-300 bg-[#100C24] border border-white/5 hover:border-purple-500/20 hover:shadow-lg hover:shadow-purple-500/10 h-[200px]">
+              <div key={member.id} className="group flex items-center gap-6 p-6 rounded-2xl transition-all duration-300 bg-white dark:bg-[#100C24] border border-gray-200 dark:border-white/5 hover:border-purple-500/50 shadow-sm hover:shadow-xl hover:shadow-purple-500/10 h-[200px]">
                 {/* Image Container - Left Side, Circle */}
                 <div className="relative w-20 h-20 shrink-0">
                   {member.image_url ? (
@@ -42,7 +42,7 @@ export default async function TeamPage() {
                       src={member.image_url}
                       alt={member.name}
                       fill
-                      className="object-cover rounded-full border-2 border-white/10 group-hover:border-purple-500/50 transition-colors duration-300"
+                      className="object-cover rounded-full border-2 border-gray-100 dark:border-white/10 group-hover:border-purple-500/50 transition-colors duration-300"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-secondary/10 text-muted-foreground rounded-full">

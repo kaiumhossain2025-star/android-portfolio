@@ -23,7 +23,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       transition={{ duration: 0.3 }}
     >
       {/* Image */}
-      <div className="relative w-full h-48 rounded-lg overflow-hidden mb-4 bg-(--color-bg)">
+      <div className="relative w-full h-80 rounded-lg overflow-hidden mb-4 bg-(--color-bg)">
         <Image
           src={project.image_url || project.image || "/placeholder.svg"}
           alt={project.title}

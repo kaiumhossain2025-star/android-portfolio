@@ -5,9 +5,7 @@ import Image from "next/image"
 import { 
   ArrowRight, 
   Smartphone, 
-  ScanLine, 
   Code2, 
-  Car, 
   Target, 
   Lightbulb, 
   Users, 
@@ -16,7 +14,16 @@ import {
   MapPin,
   Download,
   CheckCircle2,
-  LucideIcon
+  LucideIcon,
+  Palette,
+  Gamepad2,
+  Clock,
+  MessageSquare,
+  ShieldCheck,
+  Zap,
+  Search,
+  PenTool,
+  Rocket
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -30,20 +37,7 @@ export const metadata: Metadata = {
   description: "Learn more about Aptic Studio, our mission, vision, and the team behind our success.",
 }
 
-// Icon mapping
-const ICON_MAP: Record<string, LucideIcon> = {
-  ScanLine, Code2, Car, Target, Lightbulb, Users, Globe, Smartphone, MapPin, Download, CheckCircle2
-}
 
-// Color themes mapping
-const THEME_MAP: Record<string, { text: string, bg: string, btn: string, btnHover: string }> = {
-  green: { text: "text-green-400", bg: "bg-green-500/10", btn: "bg-green-600", btnHover: "hover:bg-green-700" },
-  blue: { text: "text-blue-400", bg: "bg-blue-500/10", btn: "bg-blue-600", btnHover: "hover:bg-blue-700" },
-  orange: { text: "text-orange-400", bg: "bg-orange-500/10", btn: "bg-orange-600", btnHover: "hover:bg-orange-700" },
-  purple: { text: "text-purple-400", bg: "bg-purple-500/10", btn: "bg-purple-600", btnHover: "hover:bg-purple-700" },
-  teal: { text: "text-teal-400", bg: "bg-teal-500/10", btn: "bg-teal-600", btnHover: "hover:bg-teal-700" },
-  primary: { text: "text-purple-400", bg: "bg-purple-500/10", btn: "bg-purple-600", btnHover: "hover:bg-purple-700" },
-}
 
 async function getAboutData() {
   const supabase = createClient(
@@ -86,184 +80,175 @@ async function getAboutData() {
 export default async function AboutPage() {
   const { aboutContent, stats, products, siteSettings } = await getAboutData()
   
-  // Dynamic Content variables
-  const heroBadge = "ApticStudio"
-  const heroTitle = aboutContent?.title || "About Aptic Studio"
-  const heroDescription = aboutContent?.content || "Aptic Studio is a forward-thinking mobile development company dedicated to solving local challenges through innovative technology. We believe in creating apps that make everyday tasks easier and more efficient for our community."
-  // Note: Using 'content' for the description based on the screenshot layout.
-  // The Admin panel has 'description' (subtitle) and 'content' (main). 
-  // We'll use them smartly.
-
-  const values = [
-    { title: "Mission Driven", desc: "Creating technology solutions that address real challenges faced by our communities.", icon: Target, color: "teal" },
-    { title: "Innovation First", desc: "Leveraging cutting-edge AI and mobile technologies to build smart, intuitive applications.", icon: Lightbulb, color: "purple" },
-    { title: "User Focused", desc: "Designing experiences that are accessible, easy to use, and truly helpful for everyday users.", icon: Users, color: "blue" },
-    { title: "Global Impact", desc: "Proud to build solutions that serve and empower our local and global communities.", icon: Globe, color: "primary" },
-  ]
-  
-  const displayProducts = products.length > 0 ? products : [
-    { 
-       title: "Aptic AI Scanner", 
-       category: "QR, OCR & PDF", 
-       description: "Transform your phone into a powerful document scanner with AI-powered OCR, QR code scanning, and instant PDF creation.",
-       icon_name: "ScanLine",
-       color_theme: "green",
-       primary_button_text: "Get on Play Store",
-       primary_button_link: siteSettings?.play_store_url || "#",
-       is_featured: true,
-       is_coming_soon: false,
-       features: ["Smart OCR Recognition", "PDF Export & Sharing"]
-    },
-    { 
-       title: "Aptic Code Studio", 
-       category: "AI-Powered IDE",
-       description: "Your intelligent coding companion. Write, debug, and deploy code directly from your mobile device with AI assistance.",
-       icon_name: "Code2",
-       color_theme: "blue",
-       primary_button_text: "Visit App Site",
-       is_featured: false,
-       is_coming_soon: false,
-       features: ["Multi-Language Support", "Built-in Terminal"]
-    },
-    { 
-       title: "Tripzy", 
-       category: "Ride Sharing",
-       description: "A revolutionary ride-hailing app designed specifically for local transportation ecosystems. Fair pricing for everyone.",
-       icon_name: "Car",
-       color_theme: "orange",
-       primary_button_text: "Notify Me",
-       is_featured: false,
-       is_coming_soon: true,
-       features: ["Easy Booking", "Real-time Tracking"]
-    }
-  ]
+  // Helper for belief section
+  const QuoteIcon = ({ className, size }: { className?: string, size?: number }) => (
+    <svg 
+      className={className} 
+      width={size} 
+      height={size} 
+      viewBox="0 0 24 24" 
+      fill="currentColor" 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+    </svg>
+  )
 
   return (
     <div className="min-h-screen bg-[#030014] text-gray-200 selection:bg-purple-500/30">
       
-      {/* 1. HERO / ABOUT SECTION (Matches Screenshot 2) */}
-      <section className="container mx-auto px-4 py-16 md:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          
-          {/* Left Side: Text Content */}
-          <div className="space-y-8">
-             {/* Badge */}
-             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-medium">
-               <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-               </span>
-               {heroBadge}
-             </div>
-
-             {/* Title */}
-             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
-               {heroTitle}
-             </h1>
-
-             {/* Description */}
-             <div className="text-lg text-gray-400 leading-relaxed max-w-xl">
-               {heroDescription}
-             </div>
-
-
+      {/* 1. HERO SECTION */}
+      <section className="container mx-auto px-4 py-20 text-center">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-medium">
+             <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+             </span>
+             About Us
           </div>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight">
+            We Build Digital Products That <span className="text-purple-500">People Trust</span>
+          </h1>
+          <p className="text-xl text-gray-400 leading-relaxed">
+            A development studio focused on building scalable, secure, and user-centric digital solutions.
+          </p>
+        </div>
+      </section>
 
-          {/* Right Side: Values Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-             {values.map((v, i) => {
-               const theme = THEME_MAP[v.color] || THEME_MAP.primary
-               // Custom styling for these specific cards to match the dark screenshot
-               return (
-                 <div key={i} className="bg-[#100C24] p-6 rounded-2xl border border-white/5 hover:border-purple-500/20 transition-colors group">
-                    <div className={`w-10 h-10 rounded-lg ${theme.bg} ${theme.text} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                       <v.icon size={20} />
-                    </div>
-                    <h3 className="font-bold text-white text-lg mb-2">{v.title}</h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">{v.desc}</p>
-                 </div>
-               )
-             })}
-          </div>
+      {/* 2. WHO WE ARE */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="max-w-3xl text-left space-y-12">
+           
+           <div className="space-y-6">
+             <h2 className="text-3xl md:text-4xl font-bold text-white">Who We Are</h2>
+             <div className="space-y-4 text-gray-400 text-lg leading-relaxed">
+                <p>
+                  We are a technology-driven development studio working with startups and businesses to turn complex ideas into simple, effective digital products.
+                </p>
+                <p>
+                  Our approach combines clean design, strong engineering, and real-world problem solving.
+                </p>
+             </div>
+           </div>
+
 
         </div>
       </section>
 
+      {/* 3. WHAT WE DO */}
+      <section className="container mx-auto px-4 py-16 text-left">
+         <div className="mb-12">
+            <h2 className="text-3xl font-bold text-white mb-4">What We Do</h2>
+            <p className="text-gray-400 max-w-2xl">We specialise in delivering end-to-end digital solutions tailored to business needs.</p>
+         </div>
+         
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Android App Dev", icon: Smartphone },
+              { title: "iOS App Dev", icon: Smartphone },
+              { title: "Mobile Game Dev", icon: Gamepad2 },
+              { title: "UI/UX Design", icon: Palette },
+            ].map((service, i) => (
+               <div key={i} className="flex flex-col gap-4 p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-300">
+                  <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 shrink-0">
+                      <service.icon size={20} />
+                  </div>
+                  <h3 className="font-medium text-white text-lg">{service.title}</h3>
+               </div>
+            ))}
+         </div>
+      </section>
 
 
 
-
-      {/* 3. CONTACT CTA SECTION (Matches Screenshot 3) */}
-      <section className="py-24 container mx-auto px-4">
-          <div className="text-center mb-16 space-y-4">
-             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-bold uppercase tracking-wider">
-                <Mail size={14} /> Get In Touch
-             </div>
-             <h2 className="text-3xl md:text-5xl font-bold text-white">Let's Build Something <span className="text-purple-500">Together</span></h2>
-             <p className="text-gray-400 max-w-lg mx-auto">Have a project idea or want to collaborate? We'd love to hear from you.</p>
-          </div>
-
-          <div className="bg-[#0B081F] rounded-[2.5rem] p-8 md:p-12 border border-white/5 max-w-5xl mx-auto flex flex-col md:flex-row gap-12 items-center">
-             {/* Left: Info */}
-             <div className="flex-1 space-y-10 w-full">
-                <h3 className="text-2xl font-bold text-white">Contact Information</h3>
-                
-                     <div className="space-y-8">
-                     <div className="flex items-start gap-5">
-                        <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
-                           <Mail size={22} />
-                        </div>
-                        <div>
-                           <div className="font-bold text-white mb-1">Email</div>
-                           <a href={`mailto:${siteSettings?.contact_email || 'hello@apticstudio.com'}`} className="text-gray-400 hover:text-purple-400 transition-colors">
-                              {siteSettings?.contact_email || 'hello@apticstudio.com'}
-                           </a>
-                        </div>
-                     </div>
-                     
-                     <div className="flex items-start gap-5">
-                        <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
-                           <MapPin size={22} />
-                        </div>
-                        <div>
-                           <div className="font-bold text-white mb-1">Location</div>
-                           <div className="text-gray-400">{siteSettings?.address || 'New York, USA'}</div>
-                        </div>
-                     </div>
-
-                     <div className="flex items-start gap-5">
-                        <div className="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center shrink-0">
-                           <Download size={22} />
-                        </div>
-                        <div>
-                           <div className="font-bold text-white mb-1">Play Store</div>
-                           <a href={siteSettings?.play_store_url || "#"} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors">View Our Apps</a>
-                        </div>
-                     </div>
-                 </div>
+      {/* MISSION & VISION */}
+      <section className="container mx-auto px-4 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
+              {/* Mission */}
+              <div className="space-y-4">
+                  <div className="flex justify-start text-teal-400 mb-2">
+                      <Target size={28} />
+                  </div>
+                  <h3 className="font-bold text-white text-xl">Our Mission</h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    To create meaningful digital products that solve real problems, deliver long-term value, and maintain high standards of quality and performance.
+                  </p>
               </div>
-
-             {/* Right: Card */}
-             <div className="flex-1 w-full bg-[#110D26] rounded-3xl p-10 text-center flex flex-col items-center justify-center gap-6 border border-white/5 shadow-2xl relative overflow-hidden group">
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                
-                <div className="w-28 h-28 bg-[#7C3AED] text-white rounded-[2rem] flex items-center justify-center text-3xl font-bold shadow-2xl shadow-purple-600/20 mb-2">
-                   AS
-                </div>
-                
-                <div>
-                   <h3 className="text-xl font-bold text-white tracking-wide uppercase">APTIC STUDIO</h3>
-                   <p className="text-sm text-gray-500 mt-1">Innovative Software Solutions</p>
-                </div>
-                
-                <a href={siteSettings?.play_store_url || "#"} target="_blank" rel="noopener noreferrer" className="w-full max-w-xs block">
-                    <Button className="w-full rounded-xl bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-semibold h-12 shadow-lg shadow-purple-600/20" size="lg">
-                       Visit Play Store
-                    </Button>
-                </a>
-             </div>
+              {/* Vision */}
+              <div className="space-y-4">
+                  <div className="flex justify-start text-purple-400 mb-2">
+                      <Globe size={28} />
+                  </div>
+                  <h3 className="font-bold text-white text-xl">Our Vision</h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    To become a trusted global technology partner by consistently delivering reliable, scalable, and impactful digital solutions.
+                  </p>
+              </div>
           </div>
       </section>
+
+      {/* 4. WHY CHOOSE US */}
+      <section className="container mx-auto px-4 py-24 text-left">
+          <h2 className="text-3xl font-bold text-white mb-12">Why Choose Us</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+              {[
+                "Quality over shortcuts",
+                "Transparent communication",
+                "On-time delivery",
+                "Scalable & maintainable code",
+                "Real-world problem understanding",
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/5 transition-colors duration-300">
+                    <CheckCircle2 size={24} className="text-purple-500 shrink-0" />
+                    <span className="text-lg text-gray-300 font-medium">{item}</span>
+                </div>
+              ))}
+          </div>
+      </section>
+
+      {/* 5. PROCESS */}
+      <section className="container mx-auto px-4 py-16 text-left">
+        <h2 className="text-3xl font-bold text-white mb-8">Our Process</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+           {[
+             "Discover & Plan",
+             "Design & Prototype",
+             "Develop & Test",
+             "Launch & Support",
+           ].map((phase, i) => (
+             <div key={i} className="p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors duration-300">
+                <span className="block text-4xl font-bold text-purple-500/20 mb-2">0{i + 1}</span>
+                <p className="text-xl font-medium text-gray-300">
+                  {phase}
+                </p>
+             </div>
+           ))}
+        </div>
+      </section>
+
+      {/* 6. CTA Headline */}
+      <section className="container mx-auto px-4 pt-20 pb-8 text-center">
+         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Have any idea in mind?</h2>
+         <p className="text-3xl md:text-5xl font-extrabold text-purple-500 leading-tight py-2">
+            Let's build something impactful together
+         </p>
+      </section>
+
+      {/* 7. CTA */}
+      <section className="container mx-auto px-4 pb-24 text-center">
+        <Link href="/#contact">
+          <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-12 py-8 text-2xl rounded-full font-bold shadow-lg shadow-purple-500/20 transition-all hover:scale-105">
+            Let's Talk
+          </Button>
+        </Link>
+      </section>
+
+
+
+
+
+   
 
     </div>
   )

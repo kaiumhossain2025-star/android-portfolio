@@ -84,11 +84,11 @@ export default function Header() {
       </Link>
 
       {/* Products Dropdown */}
-      <div className="flex items-center gap-0">
-        <Link href="/products" className="px-0 py-2 rounded-l-lg text-foreground hover:bg-muted transition-colors font-medium">
+      <div className="flex items-center gap-0.5">
+        <Link href="/products" className="px-3 py-2 rounded-l-lg text-foreground hover:bg-muted transition-colors font-medium">
           Products
         </Link>
-        <DropdownMenu>
+        <DropdownMenu modal={false}>
           <DropdownMenuTrigger className="px-1.5 py-2 rounded-r-lg text-foreground hover:bg-muted transition-colors font-medium focus:outline-none flex items-center">
             <ChevronDown size={14} className="opacity-50" />
           </DropdownMenuTrigger>
@@ -142,53 +142,51 @@ export default function Header() {
       </div>
 
       {/* Services Dropdown */}
-      <div className="flex items-center gap-0">
-        <Link href="/services" className="px-0 py-2 rounded-l-lg text-foreground hover:bg-muted transition-colors font-medium">
-          Services
-        </Link>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="px-1.5 py-2 rounded-r-lg text-foreground hover:bg-muted transition-colors font-medium focus:outline-none flex items-center">
-            <ChevronDown size={14} className="opacity-50" />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent
-            align="start"
-            className="
+      <div className="flex items-center gap-0.5">
+          <Link href="/services" className="px-3 py-2 rounded-l-lg text-foreground hover:bg-muted transition-colors font-medium">
+             Services
+          </Link>
+          <DropdownMenu modal={false}>
+            <DropdownMenuTrigger className="px-1.5 py-2 rounded-r-lg text-foreground hover:bg-muted transition-colors font-medium focus:outline-none flex items-center">
+              <ChevronDown size={14} className="opacity-50" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              align="start"
+              className="
                 w-[300px] p-2
                 bg-white dark:bg-gray-900
                 border border-gray-200 dark:border-gray-700
                 shadow-xl
                 rounded-xl
               "
-          >
-            {servicesList?.length > 0 ? (
-              (servicesList || []).map((service) => {
-                const Icon = ICON_MAP[service.icon_name] || Smartphone
-                return (
-                  <DropdownMenuItem key={service.id} asChild className="focus:bg-gray-100 dark:focus:bg-gray-800 focus:text-foreground">
-                    <Link href={`/services/${service.id}`} className="flex items-start gap-3 p-3 cursor-pointer">
-                      <div className={`p-2 rounded-md ${service.color_theme.includes('blue') ? 'bg-blue-500/10 text-blue-500' : service.color_theme.includes('purple') ? 'bg-purple-500/10 text-purple-500' : 'bg-primary/10 text-primary'}`}>
-                        <Icon size={20} />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-foreground">{service.title}</div>
-                        <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{service.description}</p>
-                      </div>
-                    </Link>
-                  </DropdownMenuItem>
-                )
-              })
-            ) : (
-              <div className="p-4 text-center text-muted-foreground text-sm">Loading services...</div>
-            )}
-          </DropdownMenuContent>
-        </DropdownMenu>
+            >
+              {servicesList?.length > 0 ? (
+                (servicesList || []).map((service) => {
+                  const Icon = ICON_MAP[service.icon_name] || Smartphone
+                  return (
+                    <DropdownMenuItem key={service.id} asChild className="focus:bg-gray-100 dark:focus:bg-gray-800 focus:text-foreground">
+                      <Link href={`/services/${service.id}`} className="flex items-start gap-3 p-3 cursor-pointer">
+                        <div className={`p-2 rounded-md ${service.color_theme.includes('blue') ? 'bg-blue-500/10 text-blue-500' : service.color_theme.includes('purple') ? 'bg-purple-500/10 text-purple-500' : 'bg-primary/10 text-primary'}`}>
+                          <Icon size={20} />
+                        </div>
+                        <div>
+                          <div className="font-semibold text-foreground">{service.title}</div>
+                          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{service.description}</p>
+                        </div>
+                      </Link>
+                    </DropdownMenuItem>
+                  )
+                })
+              ) : (
+                <div className="p-4 text-center text-muted-foreground text-sm">Loading services...</div>
+              )}
+            </DropdownMenuContent>
+          </DropdownMenu>
       </div>
 
-
-
       {/* Projects Dropdown */}
-      <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center gap-1 px-0 py-2 rounded-lg text-foreground hover:bg-muted transition-colors font-medium focus:outline-none">
+      <DropdownMenu modal={false}>
+        <DropdownMenuTrigger className="flex items-center gap-1 px-4 py-2 rounded-lg text-foreground hover:bg-muted transition-colors font-medium focus:outline-none">
           Projects <ChevronDown size={14} className="opacity-50" />
         </DropdownMenuTrigger>
         <DropdownMenuContent
@@ -202,7 +200,7 @@ export default function Header() {
   "
         >
           <DropdownMenuItem asChild className="focus:bg-gray-100 dark:focus:bg-gray-800 focus:text-foreground">
-            <Link href={getLink("#projects")} className="flex items-start gap-3 p-3 cursor-pointer">
+            <Link href="/projects" className="flex items-start gap-3 p-3 cursor-pointer">
               <div className="p-2 bg-orange-500/10 rounded-md text-orange-500">
                 <Folder size={20} />
               </div>
@@ -226,11 +224,8 @@ export default function Header() {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <Link href="/team" className="px-2 py-2 rounded-lg text-foreground hover:bg-muted transition-colors font-medium">
+      <Link href="/team" className="px-4 py-2 rounded-lg text-foreground hover:bg-muted transition-colors font-medium">
         Team
-      </Link>
-      <Link href="/about" className="px-2 py-2 rounded-lg text-foreground hover:bg-muted transition-colors font-medium">
-        About Us
       </Link>
     </div>
   )
